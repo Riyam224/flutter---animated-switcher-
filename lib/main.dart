@@ -1,4 +1,4 @@
-import 'package:animation_switcher/views/counter_view.dart';
+import 'package:animation_switcher/views/animated_switcher_tests.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,6 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Animation Switcher ', home: const ThemeToggle());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Animation Switcher ',
+      home: const AuthView(),
+    );
   }
 }
