@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+// todo counter app
 class CounterView extends StatefulWidget {
   const CounterView({super.key});
 
@@ -48,7 +49,6 @@ class _CounterViewState extends State<CounterView> {
                 '$counter',
                 key: ValueKey<int>(counter),
                 style: TextStyle(fontSize: 30),
-                
               ),
             ),
             // todo
@@ -59,6 +59,50 @@ class _CounterViewState extends State<CounterView> {
               child: Icon(Icons.add, size: 30),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+// _____________ todo theme toggle
+
+class ThemeToggle extends StatefulWidget {
+  const ThemeToggle({super.key});
+
+  @override
+  State<ThemeToggle> createState() => _ThemeToggleState();
+}
+
+class _ThemeToggleState extends State<ThemeToggle> {
+  bool isDark = false;
+
+  void changeTheme() {
+    setState(() {
+      isDark = !isDark;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: isDark ? Colors.black : Colors.white,
+      body: GestureDetector(
+        onTap: changeTheme,
+        child: Center(
+          // todo
+          child: AnimatedSwitcher(
+            duration: Duration(milliseconds: 200),
+            transitionBuilder: (child, animation) {
+              return RotationTransition(turns: animation, child: child);
+            },
+            child: Icon(
+              size: 50,
+              color: isDark ? Colors.white : Colors.black,
+              isDark ? Icons.dark_mode : Icons.light_mode,
+              key: ValueKey(isDark),
+            ),
+          ),
         ),
       ),
     );
